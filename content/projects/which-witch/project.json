@@ -1,0 +1,14 @@
+{
+    "title": "Example Game",
+    "shortDescription": "A rhythm game + visual novel.",
+    "year": 2026,
+    "status": "In Development",
+    "technologies": [
+        "Godot",
+        "GDScript"
+    ],
+    "categories": [
+        "Game Development"
+    ],
+    "thumbnail": ""
+}
