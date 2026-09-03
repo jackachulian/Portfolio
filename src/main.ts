@@ -1,57 +1,74 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import typescriptLogo from './assets/typescript.svg'
-import viteLogo from './assets/vite.svg'
+import "./style.css";
+import { loadProjects } from "./projects";
+import { renderProjectPage } from "./project-page";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${typescriptLogo}" class="framework" alt="TypeScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.ts</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+const path = window.location.pathname;
 
-<div class="ticks"></div>
+if (path.startsWith("/projects/")) {
+    const id = path.split("/")[2];
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://www.typescriptlang.org" target="_blank">
-          <img class="button-icon" src="${typescriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+    if (id) {
+        renderProjectPage(id);
+    }
+} else {
+    renderHomePage();
+}
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+function renderHomePage() {
+    const projects = loadProjects();
+
+    const app = document.querySelector<HTMLDivElement>("#app")!;
+
+    app.innerHTML = `
+        <header class="hero">
+            <h1>Jack Caesar</h1>
+            <p>Computer Science Student & Game Developer</p>
+        </header>
+
+        <main>
+            <section>
+                <h2>Projects</h2>
+
+                <div id="projects" class="projects-grid"></div>
+            </section>
+        </main>
+    `;
+
+    const projectsContainer =
+        document.querySelector<HTMLDivElement>("#projects")!;
+
+    for (const project of projects) {
+        const card = document.createElement("a");
+
+        card.className = "project-card";
+        card.href = `/projects/${project.id}`;
+
+        card.innerHTML = `
+            <div class="project-image">
+                ${
+                    project.thumbnail
+                        ? `<img src="src/content/projects/${project.id}/${project.thumbnail}" alt="${project.title} Thumbnail">`
+                        : ""
+                }
+            </div>
+
+            <div class="project-content">
+                <h3>${project.title}</h3>
+
+                <p>${project.shortDescription}</p>
+
+                <div class="project-tags">
+                    ${project.technologies
+                        .map(technology => `<span>${technology}</span>`)
+                        .join("")}
+                </div>
+
+                <small>
+                    ${project.year} · ${project.status}
+                </small>
+            </div>
+        `;
+
+        projectsContainer.appendChild(card);
+    }
+}

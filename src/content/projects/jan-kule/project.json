@@ -1,0 +1,17 @@
+{
+    "id": "jan-kule",
+    "title": "jan kule",
+    "thumbnail": "./thumbnail.png",
+    "shortDescription": "A pixel-art Metroidvania centered around painting the environment.",
+    "year": 2026,
+    "status": "In Development",
+    "technologies": [
+        "Godot",
+        "GDScript",
+        "GLSL"
+    ],
+    "categories": [
+        "Game Development",
+        "Programming"
+    ]
+}
