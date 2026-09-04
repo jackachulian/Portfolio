@@ -138,17 +138,17 @@ export function createShaderBackground(
     let mouseX = 0.5;
     let mouseY = 0.5;
 
-    let targetMouseX = 0.5;
-    let targetMouseY = 0.5;
+    // let targetMouseX = 0.5;
+    // let targetMouseY = 0.5;
 
-    window.addEventListener("mousemove", (event) => {
-        targetMouseX =
-            event.clientX / window.innerWidth;
+    // window.addEventListener("mousemove", (event) => {
+    //     targetMouseX =
+    //         event.clientX / window.innerWidth;
 
-        targetMouseY =
-            1.0 -
-            event.clientY / window.innerHeight;
-    });
+    //     targetMouseY =
+    //         1.0 -
+    //         event.clientY / window.innerHeight;
+    // });
 
     const onMouseMove = (event: MouseEvent) => {
         mouseX = event.clientX / window.innerWidth;
