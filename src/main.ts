@@ -1,6 +1,9 @@
 import "./style.css";
 import { loadProjects } from "./projects";
 import { renderProjectPage } from "./project-page";
+import { createShaderBackground } from "./webgl";
+import headerShader from "./shaders/header.frag?raw";
+import mainShader from "./shaders/main.frag?raw";
 
 const path = window.location.pathname;
 
@@ -14,6 +17,28 @@ if (path.startsWith("/projects/")) {
     renderHomePage();
 }
 
+const headerCanvas =
+    document.querySelector<HTMLCanvasElement>(
+        "#header-background"
+    );
+if (headerCanvas) {
+    createShaderBackground(
+        headerCanvas,
+        headerShader
+    );
+}
+
+const mainCanvas =
+    document.querySelector<HTMLCanvasElement>(
+        "#main-background"
+    );
+if (mainCanvas) {
+    createShaderBackground(
+        mainCanvas,
+        mainShader
+    );  
+}
+
 function renderHomePage() {
     const projects = loadProjects();
 
@@ -21,14 +46,14 @@ function renderHomePage() {
 
     app.innerHTML = `
         <header class="hero">
+            <canvas id="header-background"></canvas>
             <h1>Jack Caesar</h1>
-            <p>Computer Science Student & Game Developer</p>
+            <p>Computer Science Student & Game Programmer</p>
         </header>
 
         <main>
             <section>
-                <h2>Projects</h2>
-
+                <h2 class="projects-header">Projects</h2>
                 <div id="projects" class="projects-grid"></div>
             </section>
         </main>

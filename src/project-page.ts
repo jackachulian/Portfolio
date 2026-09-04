@@ -1,11 +1,16 @@
 import "./style.css";
 import { marked } from "marked";
 import { loadProjects } from "./projects";
+import { createShaderBackground } from "./webgl";
+// import headerShader from "./shaders/header.frag?raw";
+import mainShader from "./shaders/main.frag?raw";
 
 async function loadDescription(id: string): Promise<string> {
+    // get relative to the url (/projects/...)
     const response = await fetch(
-        `/content/projects/${id}/description.md`
+        `../src/content/projects/${id}/description.md`
     );
+    console.log(response);
 
     if (!response.ok) {
         throw new Error("Could not load project description.");
@@ -32,12 +37,17 @@ export async function renderProjectPage(id: string) {
         return;
     }
 
-    const markdown = await loadDescription(id);
-    const html = await marked.parse(markdown);
+    // console.log(id);
+
+    const description_markdown = await loadDescription(id);
+    // console.log(description_markdown);
+
+    const html = await marked.parse(description_markdown);
+    // console.log(html);
+
 
     app.innerHTML = `
         <main class="project-page">
-
             <a href="/" class="back-button">
                 ← Back to Projects
             </a>
@@ -66,4 +76,15 @@ export async function renderProjectPage(id: string) {
 
         </main>
     `;
+
+    const mainCanvas =
+        document.querySelector<HTMLCanvasElement>(
+            "#main-background"
+        );
+    if (mainCanvas) {
+        createShaderBackground(
+            mainCanvas,
+            mainShader
+        );  
+    }
 }

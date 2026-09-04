@@ -18,11 +18,14 @@ body {
 .hero h1 {
     font-size: 4rem;
     margin: 0;
+    font-family: "Fira Code", monospace;
+    text-shadow: 8px 8px 8px #000, 5px 5px 0px #000;
 }
 
 .hero p {
     font-size: 1.25rem;
-    color: #aaa;
+    color: #ffefc3;
+    text-shadow: 4px 4px 4px #000, 3px 3px 0px #000;
 }
 
 main {
@@ -36,6 +39,13 @@ h2 {
     margin-bottom: 30px;
 }
 
+.projects-header {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: "Fira Code", monospace;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -44,11 +54,22 @@ h2 {
 
 .project-card {
     overflow: hidden;
-    border: 1px solid #333;
-    border-radius: 12px;
-    background: #181818;
+    border: 1px solid rgba(22, 110, 226, 0.2);
+    /* border-radius: 12px; */
+    background: rgba(2, 0, 12, 0.5);
+    backdrop-filter: blur(4px);
     text-decoration: none;
     color: inherit;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.project-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: rgba(1, 157, 247, 0.8);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
 }
 
 .project-image {
@@ -102,4 +123,38 @@ h2 {
     .hero h1 {
         font-size: 3rem;
     }
+}
+
+/* Canvas background styles */
+#header-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 320px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#main-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* min-height: 100%; */
+    z-index: -2;
+    pointer-events: none;
+}
+
+
+.project-page {
+    /* border: 1px solid rgba(22, 110, 226, 0.2); */
+    /* border-radius: 12px; */
+    background: rgba(2, 0, 12, 0.7);
+    /* backdrop-filter: blur(4px); */
+    text-decoration: none;
+    color: inherit;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
 }
