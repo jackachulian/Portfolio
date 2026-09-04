@@ -1,7 +1,7 @@
 import type { Project } from "./types";
 
 const projectFiles = import.meta.glob(
-    "../src/content/projects/*/project.json",
+    "/src/content/projects/*/project.json",
     {
         eager: true,
         query: "?raw",

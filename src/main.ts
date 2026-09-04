@@ -5,6 +5,15 @@ import { createShaderBackground } from "./webgl";
 import headerShader from "./shaders/header.frag?raw";
 import mainShader from "./shaders/main.frag?raw";
 
+const thumbnailUrls = import.meta.glob(
+    "/src/content/projects/*/*.{png,jpg,jpeg,webp,gif}",
+    {
+        eager: true,
+        query: "?url",
+        import: "default"
+    }
+) as Record<string, string>;
+
 const path = window.location.pathname;
 
 if (path.startsWith("/projects/")) {
@@ -65,14 +74,25 @@ function renderHomePage() {
     for (const project of projects) {
         const card = document.createElement("a");
 
+        const thumbnailPath = project.thumbnail
+            ? `/src/content/projects/${project.id}/${project.thumbnail.replace(/^\.\//, "")}`
+            : "";
+
+        const thumbnailUrl =
+            thumbnailPath
+                ? thumbnailUrls[thumbnailPath]
+                : undefined;
+
         card.className = "project-card";
         card.href = `/projects/${project.id}`;
+
+       
 
         card.innerHTML = `
             <div class="project-image">
                 ${
-                    project.thumbnail
-                        ? `<img src="src/content/projects/${project.id}/${project.thumbnail}" alt="${project.title} Thumbnail">`
+                    thumbnailUrl
+                        ? `<img src="${thumbnailUrl}" alt="${project.title} Thumbnail">`
                         : ""
                 }
             </div>
