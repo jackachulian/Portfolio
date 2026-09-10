@@ -55,7 +55,6 @@ function renderHomePage() {
 
     app.innerHTML = `
         <header class="hero">
-            <canvas id="header-background"></canvas>
             <h1>Jack Caesar</h1>
             <p>Computer Science Student & Game Programmer</p>
         </header>

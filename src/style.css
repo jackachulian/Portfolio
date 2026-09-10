@@ -1,14 +1,51 @@
-* {
-    box-sizing: border-box;
+/* Dark Mode (default) */
+:root {
+    --background: #1c1820;
+    --foreground: #deddec;
+    --foreground-subtitle: #d8ba92;
+    --card: #433e4e;
+    --card-border: #79747f;
+    --accent: #efb34f;
 }
 
-body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    background: #111;
-    color: #eee;
+/* Light Mode */
+:root[data-theme="light"] {
+    
 }
 
+@font-face {
+  font-family: pixelFont; /* set name */
+  src: url(PixgamerRegular-OVD6A.ttf); /* url of the font */
+}
+
+/* main CSS elements */
+html {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: pixelFont; /* use font */
+    font-size: 24px;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+a {
+    color: var(--accent);
+}
+
+button {
+    color: var(--foreground);
+    background: var(--card);
+}
+
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+}
+
+/* Hero */
 .hero {
     max-width: 1000px;
     margin: 0 auto;
@@ -18,32 +55,20 @@ body {
 .hero h1 {
     font-size: 4rem;
     margin: 0;
-    font-family: "Fira Code", monospace;
     text-shadow: 8px 8px 8px #000, 5px 5px 0px #000;
 }
 
 .hero p {
     font-size: 1.25rem;
-    color: #ffefc3;
+    color: var(--foreground-subtitle);
     text-shadow: 4px 4px 4px #000, 3px 3px 0px #000;
 }
 
-main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 24px 100px;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-}
-
+/* Project list area */
 .projects-header {
     font-size: 2rem;
     margin-bottom: 30px;
     text-align: center;
-    font-family: "Fira Code", monospace;
 }
 
 .projects-grid {
@@ -54,9 +79,9 @@ h2 {
 
 .project-card {
     overflow: hidden;
-    border: 1px solid rgba(22, 110, 226, 0.2);
+    border: 1px solid var(--card-border);
     /* border-radius: 12px; */
-    background: rgba(2, 0, 12, 0.5);
+    background: var(--card);
     backdrop-filter: blur(4px);
     text-decoration: none;
     color: inherit;
@@ -68,7 +93,7 @@ h2 {
 
 .project-card:hover {
     transform: translateY(-2px) scale(1.01);
-    border-color: rgba(1, 157, 247, 0.8);
+    border-color: var(--accent);
     box-shadow: 0 18px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -125,27 +150,6 @@ h2 {
     }
 }
 
-/* Canvas background styles */
-#header-background {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 320px;
-    z-index: -1;
-    pointer-events: none;
-}
-
-#main-background {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    /* min-height: 100%; */
-    z-index: -2;
-    pointer-events: none;
-}
-
-
 .project-page {
     /* border: 1px solid rgba(22, 110, 226, 0.2); */
     /* border-radius: 12px; */
@@ -158,3 +162,4 @@ h2 {
         border-color 180ms ease,
         box-shadow 180ms ease;
 }
+
