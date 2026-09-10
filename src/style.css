@@ -2,6 +2,7 @@
 :root {
     --background: #1c1820;
     --foreground: #deddec;
+    --foreground-small: #b1afb4;
     --foreground-subtitle: #d8ba92;
     --card: #433e4e;
     --card-border: #79747f;
@@ -15,7 +16,7 @@
 
 @font-face {
   font-family: pixelFont; /* set name */
-  src: url(PixgamerRegular-OVD6A.ttf); /* url of the font */
+  src: url(/PixgamerRegular-OVD6A.ttf); /* url of the font */
 }
 
 /* main CSS elements */
@@ -118,7 +119,7 @@ main {
 }
 
 .project-content p {
-    color: #aaa;
+    color: var(--foreground-small);
     line-height: 1.6;
 }
 
@@ -137,7 +138,7 @@ main {
 }
 
 .project-content small {
-    color: #777;
+    color: var(--foreground-small);
 }
 
 @media (max-width: 700px) {
