@@ -2,7 +2,7 @@ export interface Project {
     id: string;
     title: string;
     shortDescription: string;
-    year: number;
+    date: string;
     status: string;
 
     technologies: string[];

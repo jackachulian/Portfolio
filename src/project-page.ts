@@ -5,15 +5,23 @@ import { createShaderBackground } from "./webgl";
 // import headerShader from "./shaders/header.frag?raw";
 import mainShader from "./shaders/main.frag?raw";
 
+// const thumbnailUrls = import.meta.glob(
+//     "/src/content/projects/*/*.{png,jpg,jpeg,webp,gif}",
+//     {
+//         eager: true,
+//         query: "?url",
+//         import: "default"
+//     }
+// ) as Record<string, string>;
+
 async function loadDescription(id: string): Promise<string> {
+    const descriptionUrl = new URL(`./content/projects/${id}/description.md`, import.meta.url).href;
     // get relative to the url (/projects/...)
-    const response = await fetch(
-        `../src/content/projects/${id}/description.md`
-    );
+    const response = await import(descriptionUrl);
     console.log(response);
 
     if (!response.ok) {
-        throw new Error("Could not load project description.");
+        throw new Error("Could not load project description from " + descriptionUrl);
     }
 
     return await response.text();
@@ -45,6 +53,17 @@ export async function renderProjectPage(id: string) {
     const html = await marked.parse(description_markdown);
     // console.log(html);
 
+    console.log(project);
+
+    const thumbnailUrl = project.thumbnail
+        ? new URL(`./content/projects/${project.id}/${project.thumbnail}`, import.meta.url).href
+        : "";
+
+    // const thumbnailUrl =
+    //     thumbnailPath
+    //         ? thumbnailUrls[thumbnailPath]
+    //         : undefined;
+
 
     app.innerHTML = `
         <main class="project-page">
@@ -55,9 +74,13 @@ export async function renderProjectPage(id: string) {
             <header>
                 <h1>${project.title}</h1>
 
-                <p>
-                    ${project.shortDescription}
-                </p>
+                 <div class="project-image">
+                    ${
+                        thumbnailUrl
+                            ? `<img src="${thumbnailUrl}" alt="${project.title} Thumbnail">`
+                            : ""
+                    }
+                </div>
 
                 <div class="project-tags">
                     ${project.technologies
@@ -66,7 +89,7 @@ export async function renderProjectPage(id: string) {
                 </div>
 
                 <small>
-                    ${project.year} · ${project.status}
+                    ${new Date(project.date).getFullYear()} · ${project.status}
                 </small>
             </header>
 

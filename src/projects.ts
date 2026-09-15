@@ -10,7 +10,11 @@ const projectFiles = import.meta.glob(
 );
 
 export function loadProjects(): Project[] {
-    return Object.values(projectFiles).map(file => {
+    const projects: Project[] = Object.values(projectFiles).map(file => {
         return JSON.parse(file as string) as Project;
     });
+
+    return projects.sort((first, second) =>
+        new Date(second.date).getTime() - new Date(first.date).getTime()
+    );
 }

@@ -1,11 +1,12 @@
 /* Dark Mode (default) */
 :root {
     --background: #1c1820;
+    --background: #1c1820;
+    --background-secondary: #433e4e;
     --foreground: #deddec;
     --foreground-small: #b1afb4;
     --foreground-subtitle: #d8ba92;
-    --card: #433e4e;
-    --card-border: #79747f;
+    --border: #79747f;
     --accent: #efb34f;
 }
 
@@ -16,16 +17,18 @@
 
 @font-face {
   font-family: pixelFont; /* set name */
-  src: url(/PixgamerRegular-OVD6A.ttf); /* url of the font */
+  src: url(/PixelOperator.ttf); /* url of the font */
 }
 
 /* main CSS elements */
 html {
     background: var(--background);
     color: var(--foreground);
-    font-family: pixelFont; /* use font */
+    font-family: pixelFont, monospace; /* use font */
     font-size: 24px;
+}
 
+body.loaded {
     transition:
         background-color 0.2s ease,
         color 0.2s ease;
@@ -37,13 +40,13 @@ a {
 
 button {
     color: var(--foreground);
-    background: var(--card);
+    background: var(--background-secondary);
 }
 
 main {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 24px 100px;
+    padding: 12px 24px 100px;
 }
 
 /* Hero */
@@ -80,9 +83,9 @@ main {
 
 .project-card {
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--border);
     /* border-radius: 12px; */
-    background: var(--card);
+    background: var(--background-secondary);
     backdrop-filter: blur(4px);
     text-decoration: none;
     color: inherit;
@@ -99,13 +102,15 @@ main {
 }
 
 .project-image {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
+    max-width: 500px;
     background: #222;
 }
 
 .project-image img {
     width: 100%;
     height: 100%;
+    display: block;
     object-fit: cover;
 }
 
@@ -132,8 +137,8 @@ main {
 
 .project-tags span {
     padding: 5px 10px;
-    border-radius: 100px;
-    background: #292929;
+    border-radius: 8px;
+    background: var(--background);
     font-size: 0.8rem;
 }
 
@@ -151,11 +156,11 @@ main {
     }
 }
 
+/* Project page */
 .project-page {
-    /* border: 1px solid rgba(22, 110, 226, 0.2); */
-    /* border-radius: 12px; */
-    background: rgba(2, 0, 12, 0.7);
-    /* backdrop-filter: blur(4px); */
+    border-radius: 8px;
+    background: var(--background-secondary);
+    border: 1px solid var(--border);
     text-decoration: none;
     color: inherit;
     transition:
@@ -163,4 +168,3 @@ main {
         border-color 180ms ease,
         box-shadow 180ms ease;
 }
-

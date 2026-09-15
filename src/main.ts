@@ -5,15 +5,6 @@ import { createShaderBackground } from "./webgl";
 import headerShader from "./shaders/header.frag?raw";
 import mainShader from "./shaders/main.frag?raw";
 
-const thumbnailUrls = import.meta.glob(
-    "/src/content/projects/*/*.{png,jpg,jpeg,webp,gif}",
-    {
-        eager: true,
-        query: "?url",
-        import: "default"
-    }
-) as Record<string, string>;
-
 const path = window.location.pathname;
 
 if (path.startsWith("/projects/")) {
@@ -60,6 +51,7 @@ function renderHomePage() {
         </header>
 
         <main>
+            <p>Hey there! I'm a game programmer and computer science student. I love getting into the technical aspects of game development and making systems that are built to last. I'm also a musician and play jazz piano and trombone! Below is a list of some of my projects.</p>
             <section>
                 <h2 class="projects-header">Projects</h2>
                 <div id="projects" class="projects-grid"></div>
@@ -73,14 +65,9 @@ function renderHomePage() {
     for (const project of projects) {
         const card = document.createElement("a");
 
-        const thumbnailPath = project.thumbnail
-            ? `/src/content/projects/${project.id}/${project.thumbnail.replace(/^\.\//, "")}`
+        const thumbnailUrl = project.thumbnail
+            ? new URL(`./content/projects/${project.id}/${project.thumbnail}`, import.meta.url).href
             : "";
-
-        const thumbnailUrl =
-            thumbnailPath
-                ? thumbnailUrls[thumbnailPath]
-                : undefined;
 
         card.className = "project-card";
         card.href = `/projects/${project.id}`;
@@ -108,7 +95,7 @@ function renderHomePage() {
                 </div>
 
                 <small>
-                    ${project.year} · ${project.status}
+                    ${new Date(project.date).getFullYear()} · ${project.status}
                 </small>
             </div>
         `;
