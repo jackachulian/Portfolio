@@ -1,0 +1,15 @@
+{
+    "id": "scaleton",
+    "title": "Scaleton",
+    "thumbnail": "thumbnail.png",
+    "shortDescription": "Weight-based puzzle platformer",
+    "date": "2023-11-21",
+    "status": "In Development",
+    "technologies": [
+        "Unity",
+        "C#"
+    ],
+    "categories": [
+        "Game Development"
+    ]
+}

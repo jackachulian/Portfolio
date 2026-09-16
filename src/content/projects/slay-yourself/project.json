@@ -1,0 +1,15 @@
+{
+    "id": "slay-yourself",
+    "title": "Slay Yourself",
+    "thumbnail": "thumbnail.png",
+    "shortDescription": "Short turn-based puzzle game",
+    "date": "2023-07-09",
+    "status": "In Development",
+    "technologies": [
+        "Unity",
+        "C#"
+    ],
+    "categories": [
+        "Game Development"
+    ]
+}

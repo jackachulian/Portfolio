@@ -15,16 +15,16 @@ import mainShader from "./shaders/main.frag?raw";
 // ) as Record<string, string>;
 
 async function loadDescription(id: string): Promise<string> {
-    const descriptionUrl = new URL(`./content/projects/${id}/description.md`, import.meta.url).href;
+    // const descriptionUrl = new URL(, import.meta.url).href;
     // get relative to the url (/projects/...)
-    const response = await import(descriptionUrl);
+    const response = await import(`./content/projects/${id}/description.md?raw`);
     console.log(response);
 
-    if (!response.ok) {
-        throw new Error("Could not load project description from " + descriptionUrl);
-    }
+    // if (!response.ok) {
+    //     throw new Error("Could not load project description from " + `./content/projects/${id}/description.md`);
+    // }
 
-    return await response.text();
+    return await response.default;
 }
 
 export async function renderProjectPage(id: string) {
