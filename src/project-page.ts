@@ -74,6 +74,10 @@ export async function renderProjectPage(id: string) {
     //         ? thumbnailUrls[thumbnailPath]
     //         : undefined;
 
+    var subtitle_text = `${new Date(project.date).getFullYear()} · ${project.status}`
+    if (project.itchPage) {
+        subtitle_text += ` · <a href="${project.itchPage}" aria-label="Jack on Itch.io"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg><span>Itch.IO</span></a>`;
+    }
 
     app.innerHTML = `
         <main class="project-page">
@@ -98,8 +102,8 @@ export async function renderProjectPage(id: string) {
                         .join("")}
                 </div>
 
-                <small>
-                    ${new Date(project.date).getFullYear()} · ${project.status}
+                <small class="project-subtitle">
+                    ${subtitle_text}
                 </small>
             </header>
 

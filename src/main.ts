@@ -48,6 +48,26 @@ function renderHomePage() {
         <header class="hero">
             <h1>Jack Caesar</h1>
             <p>Computer Science Student & Game Programmer</p>
+
+            <nav class="social-links" aria-label="Contact and social links">
+                <a href="mailto:jackcaesar04@gmail.com" aria-label="Email Jack">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M3 5h18v14H3zM3 6l9 7 9-7" /></svg>
+                    <span>jackcaesar04@gmail.com</span>
+                </a>
+                <a href="https://jackachulian.itch.io" aria-label="Jack on Itch.io">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg>
+                    <span>Itch.IO</span>
+                </a>           
+                <a href="https://www.linkedin.com/in/jack-caesar-437103294" aria-label="Jack on LinkedIn">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 8v11M5 5.5v.01M10 19v-6a3 3 0 0 1 6 0v6M10 11v8" /></svg>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://discord.com/users/403673232281960458" aria-label="Jack on Discord">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M7 7a12 12 0 0 1 10 0l2 10a12 12 0 0 1-14 0L7 7Zm2 6h.01M15 13h.01M8 9c2 1 6 1 8 0" /></svg>
+                    <span>Discord</span>
+                </a>
+            </nav>
+            
         </header>
 
         <main>

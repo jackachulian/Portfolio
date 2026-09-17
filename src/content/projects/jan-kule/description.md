@@ -1,5 +1,3 @@
-[itch.io Page Link](https://jackachulian.itch.io/jan-kule)
-
 *jan kule* is a small 2D platformer created for [*pali musi 2026*](https://itch.io/jam/tu), a game jam for games created using the minimalist constructed language Toki Pona. (Yes, I am a bit of a nerd when it comes to obscure languages!) This game was created in less than 48 hours.
 
 
@@ -11,5 +9,3 @@ The paint textures on the ground are rendered using a single Texture2D that stre
 Whenever the player swings their brush, many paint particles are emitted from the brush. These travel until they hit a wall, at which point a new object is spawned on another layer, This special layer is only visible by a separate camera from the main camera. This separate camera renders to a texture.
 
 To avoid taking up large amounts of memory, each particle spawned on the paint layer despawns after a single frame. This still allows each pixel to be rendered to the paint texture before the particle is despawned the following frame. The camera that renders to this texture has a clear mode of None, meaning pixels previously rendered onto the texture will not be cleared by subsequent frames, unless another paint color is painted on top of it.
-
-asoduphyasfopsdjopfo[fkpsdf] *italic*

@@ -2,11 +2,11 @@
 :root {
     --background: #1c1820;
     --background: #1c1820;
-    --background-secondary: #433e4e;
+    --background-secondary: #353142;
     --foreground: #deddec;
     --foreground-small: #b1afb4;
     --foreground-subtitle: #d8ba92;
-    --border: #79747f;
+    --border: #8d838f;
     --accent: #efb34f;
 }
 
@@ -68,6 +68,36 @@ main {
     text-shadow: 4px 4px 4px #000, 3px 3px 0px #000;
 }
 
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--foreground);
+    text-decoration: none;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.social-links a:hover {
+    color: var(--accent);
+}
+
+.social-links svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
+}
+
 /* Project list area */
 .projects-header {
     font-size: 2rem;
@@ -105,6 +135,7 @@ main {
     aspect-ratio: 16 / 10;
     max-width: 500px;
     background: #222;
+    margin: 0 auto;
 }
 
 .project-image img {
@@ -179,7 +210,20 @@ code {
 
 .project-page img {
     object-fit: cover;
-    width: 75%;
-    padding-left: 12.5%;
-    padding-right: 12.5%;
+    width: 100%;
+    max-width: 750px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.project-subtitle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.7;
 }

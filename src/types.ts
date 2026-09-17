@@ -5,6 +5,7 @@ export interface Project {
     date: string;
     status: string;
     displayOnHomepage?: boolean;
+    itchPage?: String,
 
     technologies: string[];
     categories: string[];
