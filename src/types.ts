@@ -6,6 +6,7 @@ export interface Project {
     status: string;
     displayOnHomepage?: boolean;
     itchPage?: String,
+    steamPage?: String,
 
     technologies: string[];
     categories: string[];

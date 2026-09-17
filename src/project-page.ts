@@ -76,8 +76,12 @@ export async function renderProjectPage(id: string) {
 
     var subtitle_text = `${new Date(project.date).getFullYear()} · ${project.status}`
     if (project.itchPage) {
-        subtitle_text += ` · <a href="${project.itchPage}" aria-label="Jack on Itch.io"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg><span>Itch.IO</span></a>`;
+        subtitle_text += ` · <a href="${project.itchPage}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5" /></svg><span>Itch.IO</span></a>`;
     }
+    if (project.steamPage) {
+        subtitle_text += ` · <a href="${project.steamPage}"><svg aria-hidden="true" viewBox="0 0 24 24" focusable="false"><circle cx="16.5" cy="7.5" r="3.5" /><circle cx="7" cy="17" r="3" /><path d="m9.2 15.1 4.8-4.8M4.3 16.1l3.5 1.6" /></svg><span>Steam</span></a>`;
+    }
+
 
     app.innerHTML = `
         <main class="project-page">

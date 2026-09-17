@@ -1,5 +1,7 @@
 *Which Witch?* is a rhythm game and a visual novel / dating sim all combined into one. I created the song chart editor program, and programmed many parts of the main rhythm game scene as well.
 
+This game has the largest team size out of any game I've worked on; currently there are 8 people working on the game, including artists, musicians and writers. This has helped me build skills working in a larger team. It's been difficult trying to coordinate our conflicting ideas / vision of the end goal of the game, but it's something I and everyone else has improved at during the development course of the game.
+
 ## Editor
 
 Our game is highly focused on user-generated content, so we wanted to make our editor highly accessible, and not just be an afterthought or have UI that only the developers would know how to use.
@@ -12,7 +14,6 @@ Later on when the dialogue system is more advanced, this dialogue edit window wi
 ![New Editor](new-editor.png)
 ![New Editor Settings](new-editor-settings.png)
 ![New Editor Dialogue Edit Box](new-editor-dialogue.png)
-
 
 ## FMOD Engine
 

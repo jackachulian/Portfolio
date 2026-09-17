@@ -1,0 +1,18 @@
+{
+    "id": "mana-cycle",
+    "title": "Mana Cycle",
+    "thumbnail": "main-capsule.jpg",
+    "shortDescription": "Multiplayer PVP Puzzle Game",
+    "date": "2023-04-30",
+    "status": "Finished",
+    "itchPage": "https://jackachulian.itch.io/mana-cycle",
+    "steamPage": "https://store.steampowered.com/app/2864390/Mana_Cycle/",
+    "technologies": [
+        "Unity",
+        "C#"
+    ],
+    "categories": [
+        "Game Development",
+        "Programming"
+    ]
+}

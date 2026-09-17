@@ -1,0 +1,17 @@
+{
+    "id": "closed-eyes",
+    "title": "Closed Eyes",
+    "thumbnail": "thumbnail.png",
+    "shortDescription": "Visual Novel",
+    "date": "2026-06-27",
+    "status": "On Hold",
+    "itchPage": "https://jackachulian.itch.io/closed-eyes",
+    "technologies": [
+        "Unity",
+        "C#"
+    ],
+    "categories": [
+        "Game Development",
+        "Programming"
+    ]
+}
