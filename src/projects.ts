@@ -14,7 +14,8 @@ export function loadProjects(): Project[] {
         return JSON.parse(file as string) as Project;
     });
 
-    return projects.sort((first, second) =>
+    return projects.filter(project => project.displayOnHomepage !== false)
+    .sort((first, second) =>
         new Date(second.date).getTime() - new Date(first.date).getTime()
     );
 }

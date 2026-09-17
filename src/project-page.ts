@@ -1,18 +1,19 @@
-import "./style.css";
+// import "./style.css";
+import "./syntax-highlight.css";
 import { marked } from "marked";
 import { loadProjects } from "./projects";
 import { createShaderBackground } from "./webgl";
 // import headerShader from "./shaders/header.frag?raw";
 import mainShader from "./shaders/main.frag?raw";
 
-// const thumbnailUrls = import.meta.glob(
-//     "/src/content/projects/*/*.{png,jpg,jpeg,webp,gif}",
-//     {
-//         eager: true,
-//         query: "?url",
-//         import: "default"
-//     }
-// ) as Record<string, string>;
+
+// Using ES6 import syntax
+import hljs from 'highlight.js/lib/core';
+import python from 'highlight.js/lib/languages/python';
+
+// Then register the languages you need
+hljs.registerLanguage('python', python);
+
 
 async function loadDescription(id: string): Promise<string> {
     // const descriptionUrl = new URL(, import.meta.url).href;
@@ -50,7 +51,16 @@ export async function renderProjectPage(id: string) {
     const description_markdown = await loadDescription(id);
     // console.log(description_markdown);
 
-    const html = await marked.parse(description_markdown);
+    const parsedHtml = await marked.parse(description_markdown);
+    const parsedDocument = new DOMParser().parseFromString(parsedHtml, "text/html");
+
+    parsedDocument.querySelectorAll<HTMLImageElement>("img[src]").forEach(image => {
+        console.log(image);
+        // console.log(project)
+        image.src = new URL(`./content/projects/${project.id}/${image.getAttribute("src") || ""}`, import.meta.url).href;
+    });
+
+    const html = parsedDocument.body.innerHTML;
     // console.log(html);
 
     console.log(project);
@@ -99,6 +109,11 @@ export async function renderProjectPage(id: string) {
 
         </main>
     `;
+
+    app.querySelectorAll("pre code").forEach((element) => {
+        console.log(element);
+        hljs.highlightElement(element as HTMLElement);
+    });
 
     const mainCanvas =
         document.querySelector<HTMLCanvasElement>(

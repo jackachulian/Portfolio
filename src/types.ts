@@ -4,6 +4,7 @@ export interface Project {
     shortDescription: string;
     date: string;
     status: string;
+    displayOnHomepage?: boolean;
 
     technologies: string[];
     categories: string[];
